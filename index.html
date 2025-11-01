@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiranga Game Page</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+        font-family: 'Courier New', monospace;
+        background-color: #0d0d2b;
+        color: #00ff00;
+        overflow-x: hidden;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px 10px;
+        justify-content: flex-start;
+    }
+
+    .top-logo {
+        max-width: 300px;
+        width: 80%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .boxes-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .box {
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+        font-size: 14px;
+    }
+
+    .login {
+        background-color: rgba(17, 17, 17, 0.6);
+        border: 2px solid rgba(0, 255, 0, 0.7);
+        color: #00ff00;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+
+    .blue-box {
+        background-color: rgba(0, 123, 255, 0.7);
+        border: 2px solid rgba(173, 216, 230, 0.7);
+        color: #ffffff;
+        box-shadow: 0 0 10px rgba(173, 216, 230, 0.5);
+    }
+
+    .banner-image {
+        max-width: 600px;
+        width: 90%;
+        height: auto;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    .welcome-text {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .welcome-text span:first-child {
+        display: block;
+        font-size: 24px;
+        color: #ffffff;
+    }
+
+    .welcome-text span:last-child {
+        display: block;
+        font-size: 32px;
+        color: orange;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+    }
+
+    .register-now-text {
+        text-align: center;
+        font-size: 20px;
+        color: #00ff00;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .reward-amount {
+        text-align: center;
+        font-size: 32px;
+        color: orange;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .blue-description {
+        background: rgba(0, 123, 255, 0.1);
+        border: 2px solid rgba(0, 174, 255, 0.7);
+        color: #87cefa;
+        text-align: center;
+        padding: 20px;
+        border-radius: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 1.6;
+        max-width: 90%;
+        box-shadow: 0 0 15px rgba(0, 174, 255, 0.6);
+        margin-bottom: 40px;
+        animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 10px rgba(0, 174, 255, 0.6); }
+        50% { box-shadow: 0 0 25px rgba(0, 174, 255, 0.9); }
+        100% { box-shadow: 0 0 10px rgba(0, 174, 255, 0.6); }
+    }
+
+    .glitch-box {
+        position: relative;
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid #00e5ff;
+        box-shadow: 0 0 20px #00e5ff, inset 0 0 20px #00e5ff;
+        border-radius: 15px;
+        padding: 25px 30px;
+        text-align: center;
+        max-width: 90%;
+        color: #00eaff;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        overflow: hidden;
+        animation: boxGlow 3s infinite;
+        margin-bottom: 40px;
+    }
+
+    @keyframes boxGlow {
+        0% { box-shadow: 0 0 15px #00e5ff, inset 0 0 15px #00e5ff; }
+        50% { box-shadow: 0 0 30px #00ffff, inset 0 0 30px #00ffff; }
+        100% { box-shadow: 0 0 15px #00e5ff, inset 0 0 15px #00e5ff; }
+    }
+
+    .extra-description {
+        background: rgba(255, 165, 0, 0.1);
+        border: 2px solid rgba(255, 165, 0, 0.7);
+        color: #ffb84d;
+        text-align: center;
+        padding: 25px;
+        border-radius: 15px;
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 90%;
+        box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+        animation: pulseOrange 4s infinite;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    @keyframes pulseOrange {
+        0% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.6); }
+        50% { box-shadow: 0 0 25px rgba(255, 165, 0, 1); }
+        100% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.6); }
+    }
+
+    .spec-title {
+        font-size: 26px;
+        color: #00ffcc;
+        text-shadow: 0 0 10px #00ffcc, 0 0 25px #00ffee;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+        letter-spacing: 1.2px;
+        animation: glowText 2.5s infinite alternate;
+    }
+
+    @keyframes glowText {
+        0% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffee; }
+        50% { text-shadow: 0 0 20px #00ffff, 0 0 35px #00ffcc; }
+        100% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffee; }
+    }
+
+    .spec-box {
+        background: rgba(0, 0, 0, 0.4);
+        border: 2px solid #00ffcc;
+        box-shadow: 0 0 15px #00ffcc;
+        color: #00ffcc;
+        padding: 25px;
+        border-radius: 15px;
+        font-weight: bold;
+        max-width: 90%;
+        font-size: 16px;
+        line-height: 2;
+        text-align: left;
+        letter-spacing: 1px;
+        margin-bottom: 80px;
+    }
+
+    .spec-box span {
+        color: orange;
+        font-weight: bold;
+    }
+
+    .particle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: #00ff00;
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: float 5s infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+        50% { transform: translateY(-150px) translateX(50px); opacity: 0.3; }
+        100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+    }
+
+    @media (max-width: 480px) {
+        .box { padding: 10px 14px; font-size: 13px; border-radius: 20px; }
+        .welcome-text span:last-child { font-size: 26px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <img src="https://tirangagaming.com/wp-content/uploads/2025/07/cropped-Tiranga-Game-Logo.png" class="top-logo" alt="Tiranga Game Logo">
+    <div class="boxes-container">
+        <a href="https://www.tirangaapk.com/#/register?invitationCode=4322316357495" target="_blank" class="box login">APK</a>
+        <a href="https://www.tgdream.pro/#/register?invitationCode=3426622918865" target="_blank" class="box blue-box">REGISTER</a>
+        <a href="https://t.me/+-9V4QOApkMFjZDI1" target="_blank" class="box blue-box">JOIN PREDICTION</a>
+    </div>
+    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQrXou_F9t3mM-DMZqNG7vef-3-0R97HfOu7nBsS-j8CyL7OR6P" class="banner-image" alt="Banner">
+    <div class="welcome-text">
+        <span>WELCOME TO</span>
+        <span>TIRANGA GAME</span>
+    </div>
+    <div class="register-now-text">REGISTER NOW AND GET</div>
+    <div class="reward-amount">₹500</div>
+    <div class="blue-description">
+        Tiranga Games is a trusted app to play Colour Prediction, Win Go, Aviator, Rummy, and more. 
+        Download Tiranga app to play exciting games and earn real money easily. 
+        Next, you have to complete the Tiranga app login to participate in the games. 
+        On your first Tiranga login — so what are you waiting for? 
+        Start playing the best Colour Prediction game now!
+    </div>
+    <div class="glitch-box">Welcome to Tiranga Games - Play and Win Real Rewards</div>
+    <div class="extra-description">
+      Tiranga games features a wide selection of 50+ casino games, combining luck and strategy for a chance to win real money. Whether you enjoy sports predictions or classic casino games, Tiranga delivers it all in one platform.Earn real money with Tiranga game login — download the Tiranga app and play popular lottery and prediction games.
+
+Tiranga app platform offers you exciting and rewarding games to immerse yourself in. Whether it’s about testing your luck or using strategies to win big, we have an array of games, all under one platform. Trusted by thousands of players, tiranga platform is perfect for experiencing the thrill of exciting games like colour prediction games.. 
+
+From color prediction games to lottery and more, Tiranga Game is the only platform you need to be on for winning jackpots, bonuses & exclusive rewards!
+
+Instead of letting your sports insights go to waste, the Tiranga Game Login gives you an opportunity to turn your expertise into real cash rewards—potentially reaching into the lakhs.
+
+But it doesn’t stop there. Tiranga also features a wide selection of 80+ casino games, combining luck and strategy for a chance to win real money. Whether you enjoy sports predictions or classic casino games, Tiranga delivers it all in one platform.
+    </div>
+    <div class="spec-title">TIRANGA APP SPECIFICATIONS</div>
+    <div class="spec-box">
+        <div><span>Application:</span> Tiranga Game App</div>
+        <div><span>Code To Be Used:</span> 4334322353121</div>
+        <div><span>Legalization:</span> Legal In India</div>
+        <div><span>Official Website:</span> <a href="https://tirangagaming.com/" target="_blank" style="color:#00ffff; text-decoration:none;">https://tirangagaming.com/</a></div>
+        <div><span>No Of Games Available:</span> 80+ Games</div>
+    </div>
+</div>
+<div class="particle" style="top: 20%; left: 10%;"></div>
+<div class="particle" style="top: 40%; left: 30%;"></div>
+<div class="particle" style="top: 60%; left: 50%;"></div>
+<div class="particle" style="top: 80%; left: 70%;"></div>
+<div class="particle" style="top: 50%; left: 80%;"></div>
+</body>
+</html>
